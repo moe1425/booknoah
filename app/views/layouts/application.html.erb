@@ -1,37 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
+    <meta charset="UTF-8" />
     <title>Booknoah</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
-  <body>
-    <header>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </li>
-      <% elsif admin_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path %>
-        </li>
-      <% end %>
-    </header>
-  </body>
+
 
   <body>
     <%= yield %>
+  </body>
+  <body>
+    <div class="side-bar">
+      <div id="menu-btn">
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+        <nav id="sp-menu">
+          <ul>
+            <% if user_signed_in? %>
+              <li>
+                <a href="#"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li>
+                <a href="#"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></a>
+              </li>
+            <% else %>
+              <li>
+                <a href="#"><%= link_to "新規登録", new_user_registration_path %></a>
+              </li>
+              <li>
+                <a href="#"><%= link_to "ログイン", new_user_session_path %></a>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </body>
 </html>
