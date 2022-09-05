@@ -1,7 +1,7 @@
 $(function() {
-  $('.menu-trigger').on('click', function(event) {
-    $(this).toggleClass('active');
-    $('#sp-menu').fadeToggle();
-    event.preventDefault();
-  });
+　$('.Toggle').click(function() {
+   $(this).toggleClass('active');
+  $('.menu').toggleClass('open');
+  event.preventDefault();
+ });
 });

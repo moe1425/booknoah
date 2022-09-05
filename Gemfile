@@ -56,3 +56,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+
+gem 'rakuten_web_service'
+gem "net-smtp"
+gem "net-pop"
+gem "net-imap"

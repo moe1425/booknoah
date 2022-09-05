@@ -12,37 +12,44 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="ctsHeader">
-      <div id="menu-btn">
-        <a class="menu-trigger" href="#">
+  <header>
+    <nav>
+      <div class="drawer">
+        <!--- いわゆるロゴ ------>
+        <div id="logo">LOGO</a></div>
+        <!--- いわゆるロゴ ------>
+ 
+        <!-- ハンバーガーメニュー部分 --> 
+        <div class="Toggle">
           <span></span>
           <span></span>
           <span></span>
-        </a>
-        <nav id="sp-menu">
-          <ul>
-            <% if user_signed_in? %>
-              <li>
-                <a href="#"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a>
-              </li>
-            <% elsif admin_signed_in? %>
-              <li>
-                <a href="#"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></a>
-              </li>
-            <% else %>
-              <li>
-                <a href="#"><%= link_to "新規登録", new_user_registration_path %></a>
-              </li>
-              <li>
-                <a href="#"><%= link_to "ログイン", new_user_session_path %></a>
-              </li>
-            <% end %>
-          </ul>
-        </nav>
+        </div>
       </div>
-    </div>
-  </body>
+      <!-------------- drawer ここまで-->
+ 
+      <div class="menu">
+        <ul class="list-unstyled">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "新規登録", new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_user_session_path %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </header>
   
   <body>
     <%= yield %>
