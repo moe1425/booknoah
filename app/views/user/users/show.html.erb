@@ -1,2 +1,17 @@
-<h1>User::Users#show</h1>
-<p>Find me in app/views/user/users/show.html.erb</p>
+<h3>マイページ</h3>
+  <table class="table">
+      <tbody>
+          <tr>
+            <%= image_tag @user.get_profile_image(200, 200) %>
+          </tr>
+          <tr>
+            <th>ユーザ名</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th>自己紹介</th>
+            <th><%= @user.introduction %></th>
+          </tr>
+      </tbody>
+  </table>
+  <%= link_to "プロフィールを編集", information_edit_path(@user) %>

@@ -8,15 +8,12 @@
     <%= csp_meta_tag %>
     
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-
   <body>
-    <%= yield %>
-  </body>
-  <body>
-    <div class="side-bar">
+    <div class="ctsHeader">
       <div id="menu-btn">
         <a class="menu-trigger" href="#">
           <span></span>
@@ -45,5 +42,9 @@
         </nav>
       </div>
     </div>
+  </body>
+  
+  <body>
+    <%= yield %>
   </body>
 </html>

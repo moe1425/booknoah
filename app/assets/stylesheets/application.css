@@ -14,114 +14,117 @@
  *= require_self
  */
  
- 
-.side-bar {
-  background-color:#ffc9be;
-  width:250px;
-  height:100%;
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.ctsHeader {
+  background-color:#efd098;
+  color: #844832;
+  top: 0;
+  width: 100%;
   text-align:center;
 } 
-
-ul {
-  list-style: none;
+.ul {
+  text-decoration: none;
 }
-
-#menu-btn nav ul li{
-  display:inline-block;
+#ctsHeader nav ul li {
   font-size: 16px;
-  padding:  20px 20px 20px 20px;
+  padding:  30px 20px 25px 28px;
 }
 
 /* ---------------------------- */
 /* ---- メニュー開閉ボタン ---- */
 /* ---------------------------- */
 @media screen and (max-width: 767px) {
-#menu-btn {
-  position: fixed;
-  right: 20px;
-  top: 20px;
-  z-index: 10;
-}
-.menu-trigger,
-.menu-trigger span {
-  display: inline-block;
-  transition: all .4s;
-  box-sizing: border-box;
-}
-.menu-trigger {
-  position: relative;
-  width: 50px;
-  height: 44px;
-}
-.menu-trigger span {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: #000;
-  border-radius: 4px;
-}
-.menu-trigger span:nth-child(1) {
-  top: 0;
-}
-
-.menu-trigger span:nth-child(2) {
-  top: 20px;
-}
-.menu-trigger span:nth-child(3) {
-  bottom: 0;
-}
-.menu-trigger.active span:nth-child(1) {
-  -webkit-transform: translateY(20px) rotate(-45deg);
-  transform: translateY(20px) rotate(-45deg);
-  background-color: #fff;
-}
-.menu-trigger.active span:nth-child(2) {
-  opacity: 0;
-}
-.menu-trigger.active span:nth-child(3) {
-  -webkit-transform: translateY(-20px) rotate(45deg);
-  transform: translateY(-20px) rotate(45deg);
-  background-color: #fff;
-}
-
-/* ---------------------------- */
-/* ---- メニュー本体 ---- */
-/* ---------------------------- */
-#sp-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #000;
-  color: #fff;
-  width: 100%;
-  min-height: 100%;
-  display: none;
-  z-index: 9;
-}
-#sp-menu li {
-  text-align: center;
-  margin-bottom: 30px;
-}
-#sp-menu a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
+  #menu-btn {
+    background-color:#fff;
+    
+    right: 20px;
+    top: 20px;
+    z-index: 10;
+  }
+  .menu-trigger,
+  .menu-trigger span {
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+  }
+  .menu-trigger {
+    position: relative;
+    width: 50px;
+    height: 44px;
+  }
+  .menu-trigger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #844832;
+    border-radius: 4px;
+  }
+  .menu-trigger span:nth-child(1) {
+    top: 0;
+  }
+  
+  .menu-trigger span:nth-child(2) {
+    top: 20px;
+  }
+  .menu-trigger span:nth-child(3) {
+    bottom: 0;
+  }
+  .menu-trigger.active span:nth-child(1) {
+    -webkit-transform: translateY(20px) rotate(-45deg);
+    transform: translateY(20px) rotate(-45deg);
+    background-color: #844832;
+  }
+  .menu-trigger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-trigger.active span:nth-child(3) {
+    -webkit-transform: translateY(-20px) rotate(45deg);
+    transform: translateY(-20px) rotate(45deg);
+    background-color: #844832;
+  }
+  
+  /* ---------------------------- */
+  /* ---- メニュー本体 ---- */
+  /* ---------------------------- */
+  #sp-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #efd098;
+    color: #844832;
+    width: 100%;
+    min-height: 100%;
+    display: none;
+    z-index: 9;
+  }
+  #sp-menu li {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  #sp-menu a {
+    color: #844832;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
 /* ---------------------------- */
 /* ---- アニメーション部分 ---- */
 /* ---------------------------- */
 
 /*アニメーション前のメニュー状態*/
-#sp-menu{
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .3s liner;
-}
-アニメーション後のメニュー状態
-#sp-menu.is-active{
-  pointer-events: auto;
-  opacity:  1;
-}
+/*#sp-menu{*/
+/*  pointer-events: none;*/
+/*  opacity: 0;*/
+/*  transition: opacity .3s liner;*/
+/*}*/
+/*アニメーション後のメニュー状態*/
+/*#sp-menu.is-active{*/
+/*  pointer-events: auto;*/
+/*  opacity:  1;*/
+/*}*/
 }
