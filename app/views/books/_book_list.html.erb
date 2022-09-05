@@ -1,0 +1,8 @@
+  <!--検索結果を表示-->
+  <% @books.each do |book| %>
+    <div class="commic-data">
+    <%= link_to (image_tag(book.medium_image_url)), book.item_url %>
+    <%= link_to book.title, book_path(book.id) %>
+    <%= book.author %>
+    <%= book.isbn %>
+  <% end %>

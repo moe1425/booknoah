@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-  
-  namespace :user do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
-    get 'users/unsubscribe'
-    get 'users/withdraw'
-  end
+
   # 顧客用
   # URL /users/sign_in ...
   devise_for :users, controllers: {
@@ -24,15 +17,15 @@ Rails.application.routes.draw do
   scope module: :user do
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    
     get '/my_page' => 'users#show'
     get '/information/edit' => 'users#edit'
     patch '/information' => 'users#update'
     get '/unsubscribe' => 'users#unsubscribe'
     patch '/withdraw' => 'users#withdraw'
-
-    
   end
+  
+  resources :books, only: [:create, :update, :index, :show]
+  get '/books/search' => "books#search"
   
   namespace :admin do
   end
