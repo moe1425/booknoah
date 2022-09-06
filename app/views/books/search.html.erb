@@ -9,5 +9,6 @@
  <!--検索結果を表示-->
   <h2>検索結果</h2>
   <div id='good_list'>
+    <% if @books.present? %>
     <%= render 'books/book_list' %>
   </div>

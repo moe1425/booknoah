@@ -15,9 +15,10 @@
  */
  
   #logo {
-    max-width:50%;
-    display:block;
-    margin:0 auto;
+    max-width: 50%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
   }
   
   nav {
@@ -38,23 +39,23 @@
 
   /*ナビゲーション部分*/
   .menu ul li a {
-    display:block;
-    font-weight:bold;
+    display: block;
+    font-weight: bold;
     padding: 2em;
     border-bottom: 1px dotted #CCC;
-    color:#333;
-    text-decoration:none;
+    color: #333;
+    text-decoration: none;
   }
 
   .menu ul li a:hover {
-    background-color:rgba(0,0,0,0.5);
-    color:orange;
+    background-color: rgba(0,0,0,0.5);
+    color: orange;
   }
 
 
   .menu {
-    text-align:center;
-    background-color:rgba(255,255,255,0.5);
+    text-align: center;
+    background-color: rgba(255,255,255,0.5);
     transition: .5s ease;/*滑らかに表示*/
     -webkit-transform: translateX(-105%);
     transform: translateX(-105%);/*左に隠しておく*/
@@ -75,7 +76,7 @@
     height: 42px;
     cursor: pointer;
     z-index: 3;
-    right:15px;
+    right: 15px;
   }
  
   .Toggle span {
@@ -89,7 +90,7 @@
   }
  
   .Toggle span:nth-child(1) {
-    top:5px;
+    top: 5px;
   }
  
   .Toggle span:nth-child(2) {
@@ -118,14 +119,17 @@
     transform: rotate(45deg);
   }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1000px) {
   
   header::after {
-    display:none;
+    display: none;
   } 
   
   nav {
     display: flex;
+  }
+  .sidebar {
+    display: inline-block;
   }
   
   .Toggle {
@@ -135,7 +139,7 @@
   .menu {
     width: 100%;
     background-color: transparent;
-    margin-top:0;
+    margin-top: 0;
    -webkit-transform: translateX(0);
    transform: translateX(0);
   }
@@ -154,6 +158,6 @@
   }
   
   .menu ul li a:hover {
-    background-color:transparent;
+    background-color: transparent;
   }
 }

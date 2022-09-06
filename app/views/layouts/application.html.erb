@@ -11,47 +11,68 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <header>
-    <nav>
-      <div class="drawer">
-        <!--- いわゆるロゴ ------>
-        <div id="logo">LOGO</a></div>
-        <!--- いわゆるロゴ ------>
- 
-        <!-- ハンバーガーメニュー部分 --> 
-        <div class="Toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <!-------------- drawer ここまで-->
- 
-      <div class="menu">
-        <ul class="list-unstyled">
-          <% if user_signed_in? %>
-            <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            </li>
-          <% elsif admin_signed_in? %>
-            <li>
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to "新規登録", new_user_registration_path %>
-            </li>
-            <li>
-              <%= link_to "ログイン", new_user_session_path %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
-  </header>
   
   <body>
-    <%= yield %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8">
+          <!-- ハンバーガーメニュー部分 --> 
+          <div class="Toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <header class="row header align-items-center">
+            <nav>
+              <div class="col-6 mx-auto text-center">
+                <div class="drawer">
+                  <div id="logo">LOGO</div>
+                </div>
+              </div>
+            </nav>
+          </header>
+        </div>
+        <aside class="sidebar logout-sidebar col-lg-2 text-center">
+          <div class="menu">
+            <ul class="list-unstyled">
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to "ホーム", my_page_path, method: :get %>
+                </li>
+                <li>
+                  <%= link_to "本一覧", my_page_path, method: :get %>
+                </li>
+                <li>
+                  <%= link_to "レビュー一覧", my_page_path, method: :get %>
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "ホーム", root_path, method: :get %>
+                </li>
+                <li>
+                  <%= link_to "ブックノアとは", about_path, method: :get %>
+                </li>
+                <li>
+                  <%= link_to "新規登録", new_user_registration_path, method: :get %>
+                </li>
+                <li>
+                  <%= link_to "ログイン", new_user_session_path, method: :get %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </aside>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
