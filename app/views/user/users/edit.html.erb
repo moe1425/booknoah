@@ -1,7 +1,11 @@
-<h2>プロフィール編集</h2>
-  <%= form_with model: @user, url: information_path, method: :patch do |f| %>
+  <div class="row-lg-8 main-top">
+    <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5 login-form border-box">
+      <div class="row">
+        <h2>プロフィール編集</h2>
+      </div>
+      <%= form_with model: @user, url: information_path, method: :patch do |f| %>
         <div class="form_group">
-          <%= f.label :ユーザー名 %>
+          <br><%= f.label :ユーザー名 %>
           <br><%= f.text_field :name, class: "form-control" %>
         </div>
         <div class="form_group">
@@ -18,3 +22,5 @@
           <br><%= link_to "戻る", :back, class: "btn btn-secondary rounded-pill" %>
         </div>
       <% end %>
+    </div>
+  </div>

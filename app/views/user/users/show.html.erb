@@ -1,23 +1,29 @@
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-9">
+  <div class="row-lg-8 main-top">
+    <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5 login-form border-box">
+      <div class="row">
         <h3>マイページ</h3>
-        <table class="table">
-          <tbody>
-            <tr>
-              <%= image_tag @user.get_profile_image(200, 200) %>
-            </tr>
-            <tr>
-              <th>ユーザ名</th>
-              <th><%= @user.name %></th>
-            </tr>
-            <tr>
-              <th>自己紹介</th>
-              <th><%= @user.introduction %></th>
-            </tr>
-          </tbody>
-        </table>
+      </div>
+      <div class="row py-4">
+        <div class="col-12 col-md-6 col-xl-5 text-center">
+          <br><%= image_tag @user.get_profile_image(200, 200) %>
+        </div>
+        <div class="col-12 col-md-6 col-xl-7">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>ユーザ名</th>
+                <th><%= @user.name %></th>
+              </tr>
+              <tr>
+                <th>自己紹介</th>
+                <th><%= @user.introduction %></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center">
+          <br><%= link_to "プロフィールを編集", information_edit_path(@user), class: 'btn btn-outline-info rounded-pill btn-sm col-lg-9' %>
+        </div> 
       </div>
     </div>
   </div>
-  <%= link_to "プロフィールを編集", information_edit_path(@user), class: 'btn btn-outline-info rounded-pill btn-sm col-lg-9' %>
