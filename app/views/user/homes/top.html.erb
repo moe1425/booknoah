@@ -1,6 +1,11 @@
-<p>
-  <span class="h3 font-weight-bold">ようこそブックノアへ！</span><br>
-  このサイトは、ケーキ販売のECサイトになります。<br>
-  会員でない方も商品の閲覧はできますが、<br>
-  購入には会員登録が必要になります。<br>
-</p>
+  <div class="row">
+    
+  </div>
+  <div class="row">
+    <div class="top-btn col-12 col-sm-3 offset-sm-1 text-center">
+      <%= link_to "新規登録", new_user_registration_path, class: "btn my-3" %>
+    </div>
+    <div class="top-btn col-12 col-sm-3 text-center">
+      <%= link_to "ログイン", new_user_session_path, class: "btn mb-3 my-sm-3" %>
+    </div>
+  </div>

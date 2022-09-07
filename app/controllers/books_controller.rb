@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   
   def search
     if params[:keyword]
-      @books = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
+      @books = RakutenWebService::Books::Book.search(author: params[:keyword])
     end
   end
   
@@ -10,6 +10,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = RakutenWebService::Books::Book.search(title: params[:keyword])
   end
   
   def create

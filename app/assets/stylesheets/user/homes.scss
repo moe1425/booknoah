@@ -1,3 +1,15 @@
 // Place all the styles related to the user/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.main-container {
+    background-image: url(/images/top.jpg);
+    background-size: cover;
+}
+
+@media screen and (min-width: 1000px) {
+    
+  .top-btn {
+    display: none;
+  }
+}

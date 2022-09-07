@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!--%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>-->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -34,7 +34,7 @@
             </nav>
           </header>
         </div>
-        <aside class="sidebar logout-sidebar col-lg-2 text-center">
+        <aside class="sidebar col-lg-2 text-center">
           <div class="menu">
             <ul class="list-unstyled">
               <% if user_signed_in? %>
