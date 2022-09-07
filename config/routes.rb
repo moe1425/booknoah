@@ -24,8 +24,8 @@ Rails.application.routes.draw do
     patch '/withdraw' => 'users#withdraw'
   end
   
+  get '/books/search' => 'books#search'
   resources :books, only: [:create, :update, :index, :show]
-  get '/books/search' => "books#search"
   
   namespace :admin do
   end

@@ -1,14 +1,14 @@
 <!--検索バーを表示-->
 <%= form_with url: books_search_path, method: :get, local: true do |f| %>
   <div class="form-group">
-    <% f.text_field :keyword, placeholder: "タイトルを入力", class: "form-control" %>
-    <% f.submit '書籍を検索', class: "form-control btn btn-success" %>
+    <%= f.text_field :keyword, placeholder: "著者名を入力", class: "form-control" %>
+    <%= f.submit '書籍を検索', class: "form-control btn btn-success" %>
   </div>
  <% end %>
  
  <!--検索結果を表示-->
-  <h2>検索結果</h2>
   <div id='good_list'>
     <% if @books.present? %>
-    <%= render 'books/book_list' %>
+      <%= render 'books/book_list' %>
+    <% end %>
   </div>
