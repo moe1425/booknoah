@@ -6,6 +6,33 @@
   // }
   
  /*共通*/
+  body{
+    background-color: #FFF;
+    font-family:'メイリオ', 'Yu Gothic', '游ゴシック', YuGothic, 'Meiryo', sans-serif;
+    color: #5a4138;
+  }
+  
+  .btn-outline-secondary {
+    color: #5a4138;
+    border: 1px solid #5a4138;
+  }
+  
+  
+  .btn-primary {
+    background-color: #5a4138;
+    border: 1px solid #dc3545;
+    color :#fff;
+  }
+  
+  .btn-secondary {
+    background-color: #5a4138;
+  }
+
+  
+  .header {
+    border-bottom: 2px solid #5a4138; 
+  }
+ 
  #logo {
     max-width: 50%;
     display: block;
@@ -31,6 +58,10 @@
   
   .search {
     margin: auto;
+    }
+    
+    .input-group {
+    margin: 5px;
     }
 
   /*ナビゲーション部分*/
@@ -75,6 +106,7 @@
   }
  
   .Toggle span {
+    color: #5a4138;
     display: block;
     position: absolute;
     width: 50px;
@@ -112,8 +144,6 @@
     transform: rotate(45deg);
   }
   
-  
-  
 @media screen and (min-width: 1000px) {
   
   header::after {
@@ -126,7 +156,7 @@
   
   .sidebar {
     display: inline-block;
-    background-color:#dfba4a85;
+    background-color: #745c53;
   }
   
   li:first-child {
