@@ -1,8 +1,22 @@
+  
   <!--検索結果を表示-->
   <% @books.each do |book| %>
-    <div class="boosk-data">
-    <%= link_to (image_tag(book.medium_image_url)), book.item_url %>
-    <%= link_to book.title, book_path(book.title) %>
-    <%= book.author %>
-    <%= book.isbn %>
+    <div class="table-group-divider">
+      <table> 
+        <tbody>
+          <tr>
+            <%= link_to (image_tag(book.medium_image_url)), book.item_url %>
+          </tr>
+          <tr>
+            <%= link_to book.title, book_path(book.title) %>
+          </tr>
+          <tr>
+            <%= book.author %>
+          </tr>
+          <tr>
+            <td><%= book.isbn %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   <% end %>

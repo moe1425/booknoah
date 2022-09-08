@@ -1,16 +1,16 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
-  .main-container {
-    background-image: url(/images/top.jpg);
-    background-size: cover;
-  }
-
+  // .main-container {
+  //   background-image: image-url('images/top.jpg');
+  //   background-size: cover;
+  // }
+  
  /*共通*/
  #logo {
     max-width: 50%;
     display: block;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
   }
   
   nav {
@@ -28,6 +28,10 @@
     height: 70px;
     padding: 0 1em;
   }
+  
+  .search {
+    margin: auto;
+    }
 
   /*ナビゲーション部分*/
   .menu ul li a {
