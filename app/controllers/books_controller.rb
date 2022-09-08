@@ -2,7 +2,8 @@ class BooksController < ApplicationController
   
   def search
     if params[:keyword]
-      @books = RakutenWebService::Books::Book.search(author: params[:keyword])
+      array = RakutenWebService::Books::Book.search(author: params[:keyword]).map{ _1 }
+      @books = Kaminari.paginate_array(array).page(params[:page]).per(20)
     end 
   end
   
@@ -10,7 +11,8 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = RakutenWebService::Books::Book.search(title: params[:keyword])
+    @book = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
+    # byebug
   end
   
   def create
