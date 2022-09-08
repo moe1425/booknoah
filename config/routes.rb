@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     registrations: "user/registrations",
     sessions: 'user/sessions'
   }
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'user/sessions#guest_sign_in'
+  end
 
   # 管理者用
   # URL /admin/sign_in ...
