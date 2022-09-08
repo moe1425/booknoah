@@ -31,5 +31,7 @@ Rails.application.routes.draw do
   resources :books, only: [:create, :update, :index, :show]
   
   namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :reviews, only: [:index, :show, :edit, :update]
   end
 end

@@ -37,7 +37,7 @@ class User::UsersController < ApplicationController
   def ensure_guest_user
     @user = current_user
     if @user.name == "ゲストユーザー"
-      redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集はできません"
+      redirect_to my_page_path(current_user), notice: "ゲストユーザーはプロフィール編集はできません"
     end
   end
   

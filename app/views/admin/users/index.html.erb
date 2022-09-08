@@ -1,0 +1,38 @@
+  <div class="row-lg-8 main-top">
+    <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5 login-form border-box">
+      <div class="row">
+        <h3>会員一覧</h3>
+      </div>
+      <div class="row py-4">
+        <div class="col-12 col-md-6 col-xl-5 text-center">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ユーザー画像</th>
+                <th>ユーザー名</th>
+                <th>プロフィール</th>
+                <th>ステータス</th>
+              </tr>
+            </thead>
+            <% @users.each do |user| %>
+              <%= link_to admin_user_path(user.id) do %>
+                <tbody>
+                  <tr>
+                    <td><%= image_tag user.get_profile_image(100, 100), class: "profile-img" %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.introduction %></td>
+                    <% if user.is_deleted == true %>
+                      <td class="text-secondary font-weight-bold">退会</td>
+                    <% else %>
+                      <td class="text-success font-weight-bold">有効</td>
+                    <% end %>
+                  </tr>
+                </tbody>
+              <% end %>
+            <% end %>
+            <%= paginate @users %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
