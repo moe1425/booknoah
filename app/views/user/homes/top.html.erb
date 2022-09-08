@@ -1,16 +1,15 @@
   <%= stylesheet_link_tag "application", :media => "all" %>
-  
   <div class="row">
     
   </div>
   <div class="row">
     <div class="top-btn col-12 col-sm-3 offset-sm-1 text-center">
-      <%= link_to "新規登録", new_user_registration_path, class: "btn my-3" %>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary my-3" %>
     </div>
     <div class="top-btn col-12 col-sm-3 text-center">
-      <%= link_to "ログイン", new_user_session_path, class: "btn mb-3 my-sm-3" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary mb-3 my-sm-3" %>
     </div>
     <div class="top-btn col-12 col-sm-3 text-center">
-      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn mb-3 my-sm-3 sign_in", method: :post %>
+      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-outline-secondary mb-3 my-sm-3 sign_in", method: :post %>
     </div>
   </div>
