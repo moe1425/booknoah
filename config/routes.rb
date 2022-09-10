@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
   
   get '/books/search' => 'books#search'
-  resources :books, only: [:create, :update, :index, :show, :edit, :update]
+  resources :books, only: [:new, :create, :update, :index, :show, :edit, :update, :destroy]
   
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]

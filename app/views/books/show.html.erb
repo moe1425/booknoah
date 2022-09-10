@@ -5,20 +5,27 @@
           <%= link_to (image_tag(@book.large_image_url)), @book.item_url %></br>
           <br><%= @book.title%>
           <br><%= @book.author %>
-          <%= form_with model_name: @book, url: books_path, method: :post do |f| %>
-            <div class="form-group">
-              <td><%= f.label :is_read, "読書状態" %></td>
-              <td>
-                <%= f.radio_button :is_read, :false %>
-                <%= f.label :is_read, "読み終わった", value: :true %>
-                <%= f.radio_button :is_read, :false %>
-                <%= f.label :is_read, "読んでない", value: :false %>
-              </td>
-            </div>
-            <%= f.hidden_field :isbn, :value => @book.isbn %>
-            <%= f.submit '登録', class: "btn btn-outline-success my-3" %>
+          <br><% @book.isbn %>
+          <% if @book.is_read == false %>
+            <h5 class="text-success font-weight-bold">読んでない</h5>
+          <% else %>
+            <h5 class="text-muted font-weight-bold">読み終わった</h5>
           <% end %>
+          <%#= form_with model_name: @book, url: books_path, method: :post do |f| %>
+            <!--<div class="form-group">-->
+            <!--  <td>#%= f.label :is_read, "読書状態" %></td>-->
+            <!--  <td>-->
+            <!--    <%#= f.radio_button :is_read, :false, checked: false %>-->
+            <!--    <%#= f.label :is_read, "読み終わった", value: :true %>-->
+            <!--    <%#= f.radio_button :is_read, :false %>-->
+            <!--    <#%= f.label :is_read, "読んでない", value: :false %>-->
+            <!--  </td>-->
+            <!--</div>-->
+            <%#= f.hidden_field :isbn, :value => @book.isbn %>
+            <%#= f.submit '登録', class: "btn btn-outline-success my-3" %>
+          <%# end %>
         </div>
+        <%= link_to "編集する", edit_book_path(id: @book.title, isbn: @book.isbn), class: "btn btn-success" %>
       </div>
     </div>
   </div>
