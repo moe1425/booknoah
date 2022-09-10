@@ -12,9 +12,21 @@ class BooksController < ApplicationController
 
   def show
     @book = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
-    # byebug
   end
   
   def create
+    @book = Book.new(isbn_params)
+    rbook = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
+    @book.title = rbook.title
+    @book.author = rbook.author
+    @book.image_url = rbook.large_image_url
+    @book.save
+    redirect_to book_path(id: @book.title, isbn: @book.isbn)
+  end
+  
+  private
+  
+  def isbn_params
+    params.permit(:isbn, :is_read)
   end
 end
