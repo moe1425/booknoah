@@ -1,0 +1,29 @@
+  <div class="row-lg-8 main-top">
+    <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5 text-center">
+      <div class="row">
+        <% @books.each do |book| %>
+          <div class="table-group-divider">
+            <table> 
+              <tbody>
+                <tr>
+                  <%= link_to (image_tag(book.image_url)), book_path(id: book.title, isbn: book.isbn) %>
+                </tr>
+                <tr>
+                  <%= link_to book.title, book_path(id: book.title, isbn: book.isbn) %>
+                </tr>
+                <tr>
+                  <%= book.author %>
+                </tr>
+                <tr>
+                <% if book.is_read == true %>
+                  <td class="text-success font-weight-bold">読み終わった</td>
+                <% else %>
+                  <td class="text-muted font-weight-bold">読んでない</td>
+                <% end %>
+             </tbody>
+            </table>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

@@ -7,82 +7,146 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
-    <!--%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>-->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-2">
-        </div>
-         
-          <!-- ハンバーガーメニュー部分 --> 
-          <div class="Toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        <div class="col-lg-8"> 
-          <header class="row header align-items-center">
-            <nav>
-              <div class="col-2 text-start">
-                <div class="drawer">
-                  <a class="navbar-brand" href="/">
-                    <div id="logo">LOGO</div>
-                  </a>
+    <!-- SPメニュータブ -->
+    <span class="d-block d-md-none position-fixed p-2 hum-menu">
+      MENU
+    </span>
+    
+    <!-- PCメニュー -->
+    
+      <div class="header-wrap">
+        <div class="row pt-3">
+        <div class="col-8 mx-auto">
+          <header class="header">
+            <div class="row">
+              <div class="col-md-4 mb-3 mb-md-0">
+                <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                  LOGO
                 </div>
               </div>
-              <div class="search col-8">
-                <!--検索バーを表示-->
+              <div class="col-md-7 mb-3 mb-md-0">
                 <%= render 'books/book_search' %>
               </div>
-            </nav>
+            </div>
+            <ul class="d-none d-md-block list-unstyled list-inline mt-3 text-center">
+              <% if user_signed_in? %>
+                <li class="list-inline-item"><%= link_to "ホーム", my_page_path %></li>
+                <li class="list-inline-item"><%= link_to "本一覧",  books_path %></li>
+                <li class="list-inline-item"><%= link_to "レビュー一覧", my_page_path %></li>
+                <li class="list-inline-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              <% elsif admin_signed_in? %>
+                <li class="list-inline-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+              <% else %>
+                <li class="list-inline-item"><%= link_to "ホーム", root_path %></li>
+                <li class="list-inline-item"><%= link_to "ブックノアとは", about_path %></li>
+                <li class="list-inline-item"><%= link_to "新規登録", new_user_registration_path %></li>
+                <li class="list-inline-item"><%= link_to "ログイン", new_user_session_path %></li>
+                <li class="list-inline-item"><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %></li>
+              <% end %>
+            </ul>
           </header>
         </div>
-        <aside class="sidebar col-lg-2 text-center">
-          <div class="menu">
-            <ul class="list-unstyled">
+      </div>
+      </div>
+      <!-- SPメニュー -->
+      <nav>
+        <div class="d-none side-menu vh-100 vw-100 position-fixed">
+          <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+            <h1>LOGO</h1>
+            <ul class="list-unstyled text-center">
               <% if user_signed_in? %>
-                <li>
-                  <%= link_to "ホーム", my_page_path, method: :get %>
-                </li>
-                <li>
-                  <%= link_to "本一覧", my_page_path, method: :get %>
-                </li>
-                <li>
-                  <%= link_to "レビュー一覧", my_page_path, method: :get %>
-                </li>
-                <li>
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-                </li>
+                <li><%= link_to "ホーム", my_page_path %></li>
+                <li><%= link_to "本一覧",  books_path %></li>
+                <li><%= link_to "レビュー一覧", my_page_path %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                <li><%= render 'books/book_search' %></li>
               <% elsif admin_signed_in? %>
-                <li>
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-                </li>
+                <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
               <% else %>
-                <li>
-                  <%= link_to "ホーム", root_path, method: :get %>
-                </li>
-                <li>
-                  <%= link_to "ブックノアとは", about_path, method: :get %>
-                </li>
-                <li>
-                  <%= link_to "新規登録", new_user_registration_path, method: :get %>
-                </li>
-                <li>
-                  <%= link_to "ログイン", new_user_session_path, method: :get %>
-                </li>
-                <li>
-                  <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
-                </li>
+                <li><%= link_to "ホーム", root_path %></li>
+                <li><%= link_to "ブックノアとは", about_path %></li>
+                <li><%= link_to "新規登録", new_user_registration_path %></li>
+                <li><%= link_to "ログイン", new_user_session_path %></li>
+                <li><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %></li>
               <% end %>
             </ul>
           </div>
-        </aside>
+        </div>
+      </nav>
+      
+        <!--<div class="col-lg-2">-->
+        <!--</div>-->
+         
+          <!-- ハンバーガーメニュー部分 --> 
+          <!--<div class="Toggle">-->
+          <!--  <span></span>-->
+          <!--  <span></span>-->
+          <!--  <span></span>-->
+          <!--</div>-->
+        <!--<div class="offset-lg-2 col-lg-8"> -->
+        <!--  <header class="row header align-items-center">-->
+        <!--    <nav>-->
+        <!--      <div class="col-2 text-start">-->
+        <!--        <div class="drawer">-->
+        <!--          <a class="navbar-brand" href="/">-->
+        <!--            <div id="logo">LOGO</div>-->
+        <!--          </a>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="search col-8">-->
+                <!--検索バーを表示-->
+        <!--        <%#= render 'books/book_search' %>-->
+        <!--      </div>-->
+        <!--    </nav>-->
+        <!--  </header>-->
+        <!--</div>-->
+        <!--<aside class="sidebar col-lg-2 text-center">-->
+        <!--  <div class="menu">-->
+        <!--    <ul class="list-unstyled">-->
+        <!--      <% if user_signed_in? %>-->
+        <!--        <li>-->
+        <!--          <%= link_to "ホーム", my_page_path, method: :get %>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--          <%= link_to "本一覧",  books_path, method: :get %>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--          <%= link_to "レビュー一覧", my_page_path, method: :get %>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>-->
+        <!--        </li>-->
+        <!--      <% elsif admin_signed_in? %>-->
+        <!--        <li>-->
+        <!--          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>-->
+        <!--        </li>-->
+        <!--      <% else %>-->
+        <!--        <li>-->
+        <!--          <%= link_to "ホーム", root_path, method: :get %>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--          <%= link_to "ブックノアとは", about_path, method: :get %>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--          <%= link_to "新規登録", new_user_registration_path, method: :get %>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--          <%= link_to "ログイン", new_user_session_path, method: :get %>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--          <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>-->
+        <!--        </li>-->
+        <!--      <% end %>-->
+        <!--    </ul>-->
+        <!--  </div>-->
+        <!--</aside>-->
+        <div class="container-fluid">
         <%= yield %>
-      </div>
-    </div>
+        </div>
   </body>
 </html>
