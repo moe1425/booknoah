@@ -37,7 +37,7 @@
               <% if user_signed_in? %>
                 <li class="list-inline-item"><%= link_to "ホーム", my_page_path %></li>
                 <li class="list-inline-item"><%= link_to "本一覧",  books_path %></li>
-                <li class="list-inline-item"><%= link_to "レビュー一覧", my_page_path %></li>
+                <li class="list-inline-item"><%= link_to "レビュー一覧", book_reviews_path(@books) %></li>
                 <li class="list-inline-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               <% elsif admin_signed_in? %>
                 <li class="list-inline-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
@@ -62,7 +62,7 @@
               <% if user_signed_in? %>
                 <li><%= link_to "ホーム", my_page_path %></li>
                 <li><%= link_to "本一覧",  books_path %></li>
-                <li><%= link_to "レビュー一覧", my_page_path %></li>
+                <li><%= link_to "レビュー一覧", book_reviews_path(@books) %></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
                 <li><%= render 'books/book_search' %></li>
               <% elsif admin_signed_in? %>

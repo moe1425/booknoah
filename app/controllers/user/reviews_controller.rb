@@ -1,8 +1,9 @@
 class User::ReviewsController < ApplicationController
+  before_action :authenticate_user!
   
   def new
-    @review = Review.new
     @book = Book.find(params[:book_id])
+    @review = Review.new
   end
   
   def create
@@ -14,8 +15,10 @@ class User::ReviewsController < ApplicationController
   end
 
   def index
+    @books = Book.all
+    @reviews = Review.page(params[:page]).per(10)
   end
-
+  
   def show
   end
 
