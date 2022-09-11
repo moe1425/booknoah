@@ -3,7 +3,6 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-//= require jquery.raty.js
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -13,7 +12,7 @@ import'jquery'
 import "script.js"
 import "bootstrap";
 import "../stylesheets/application.scss";
-// import raty from 'raty-js'
+
 
 Rails.start()
 Turbolinks.start()

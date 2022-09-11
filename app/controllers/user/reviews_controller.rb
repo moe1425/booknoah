@@ -2,12 +2,15 @@ class User::ReviewsController < ApplicationController
   
   def new
     @review = Review.new
+    @book = Book.find(params[:book_id])
   end
   
   def create
-    @book = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
-    @review = current_user.review.new(id: @book.title, isbn: @book.isbn)
-    review.save
+    @book = Book.find(params[:book_id])
+    @review = current_user.reviews.new(review_params)
+    @review.book_id = @book.id
+    @review.save
+    redirect_to books_path
   end
 
   def index
@@ -23,6 +26,12 @@ class User::ReviewsController < ApplicationController
   end
   
   def destroy
+  end
+  
+  private
+  
+  def review_params
+    params.require(:review).permit(:title, :content, :star)
   end
   
 end
