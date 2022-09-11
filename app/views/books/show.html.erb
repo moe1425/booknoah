@@ -9,9 +9,9 @@
           <br><%= @book.author %>
           <br><% @book.isbn %>
           <% if @book.is_read == false %>
-            <h5 class="text-success font-weight-bold">読んでない</h5>
+            <h5 class="text-muted font-weight-bold">読んでない</h5>
           <% else %>
-            <h5 class="text-muted font-weight-bold">読み終わった</h5>
+            <h5 class="text-success font-weight-bold">読み終わった</h5>
           <% end %>
           <%= link_to "編集する", edit_book_path(id: @book.title, isbn: @book.isbn), class: "btn btn-outline-secondary" %>
           <%= link_to "レビューを投稿する",  new_review_path, class: "btn btn-primary" %></br>
