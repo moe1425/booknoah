@@ -9,9 +9,9 @@
             <div class="form-group">
               <td><%= f.label :is_read, "読書状態" %></td>
               <td>
-                <%= f.radio_button :is_read, :false, checked: false %>
+                <%= f.radio_button :is_read, :true %>
                 <%= f.label :is_read, "読み終わった", value: :true %>
-                <%= f.radio_button :is_read, :false %>
+                <%= f.radio_button :is_read, :false, checked: true%>
                 <%= f.label :is_read, "読んでない", value: :false %>
               </td>
             </div>

@@ -12,15 +12,32 @@
     color: #5a4138;
   }
   
-  .btn-outline-secondary {
-    color: #5a4138;
-    border: 1px solid #5a4138;
+  
+  // ページネーションデザイン
+  .pagination {
+    justify-content: center;
+    border: none;
+    --bs-pagination-border-color: #fff;
   }
   
+  .pagination a {
+    text-decoration: none;
+    color: #696969; 
+  }
   
+  .pagination .active a {
+    background: #93c9ff;
+    border-radius: 16px;
+  }
+  
+  .pagination li a:hover {        
+    border-radius: 16px;
+  }
+    
+    // ボタン
   .btn-primary {
-    background-color: #5a4138;
-    border: 1px solid #dc3545;
+    background-color: rgba(116, 92, 83, .8);
+    border: 1px solid #5a4138;
     color :#fff;
   }
   

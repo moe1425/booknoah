@@ -20,7 +20,10 @@
                 <% else %>
                   <td class="text-muted font-weight-bold">読んでない</td>
                 <% end %>
-             </tbody>
+                <tr>
+                  <td><%= link_to '削除', book_path(id: book.title, isbn: book.isbn), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %></td>
+                </tr>
+              </tbody>
             </table>
           </div>
         <% end %>

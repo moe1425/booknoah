@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     patch '/information' => 'users#update'
     get '/unsubscribe' => 'users#unsubscribe'
     patch '/withdraw' => 'users#withdraw'
+    
+    resources :reviews, only:[:new, :create, :update, :index, :show, :edit, :update, :destroy]
   end
   
   get '/books/search' => 'books#search'
