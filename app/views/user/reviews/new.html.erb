@@ -3,7 +3,7 @@
       <div class="row">
         <h3>レビューフォーム</h3>
       </div>
-      <%= form_with model: Review.new, url: new_review_path(@review), local: true do |f| %>
+      <%= form_with model: Review.new, url: book_reviews_path(@book), local: true do |f| %>
         <%#= render 'layouts/error_messages', object: f.object %>
         <div class="form-group">
           <br><%= f.label :title, 'タイトル' %>
@@ -14,13 +14,13 @@
           <%= f.text_area :content, placeholder: "本の感想", class: 'form-control' %>
         </div>
         <div class="form-group" id="star">
-          <br><%= f.label :star,'評価', class: 'col-md-3 col-form-label' %>
+          <%= f.label :star, '評価 ', class: 'col-md-3 col-form-label' %>
           <%= f.hidden_field :star, id: :review_star %>
         </div>
         <script>
           $('#star').empty();
           $('#star').raty({
-            size    : 20,
+            size    : 36,
             starOff: '<%= asset_path('star-off.png') %>',
             starOn : '<%= asset_path('star-on.png') %>',
             scoreName: 'review[star]',　
