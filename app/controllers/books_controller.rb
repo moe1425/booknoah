@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
   
   def search
     if params[:keyword]
@@ -7,16 +8,6 @@ class BooksController < ApplicationController
     end 
   end
   
-  def index
-    @books = Book.page(params[:page]).per(10)
-  end
-
-  def show
-    @book = Book.find_by(isbn: params[:isbn])
-    @book_api_data = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
-  end
-  
- 
   def new
     @book = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
   end
@@ -29,6 +20,15 @@ class BooksController < ApplicationController
     @book.image_url = rbook.large_image_url
     @book.save
     redirect_to new_book_path(id: @book.title, isbn: @book.isbn)
+  end
+  
+  def index
+    @books = Book.page(params[:page]).per(10)
+  end
+
+  def show
+    @book = Book.find_by(isbn: params[:isbn])
+    @book_api_data = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
   end
   
   def edit

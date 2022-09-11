@@ -25,15 +25,11 @@ Rails.application.routes.draw do
     patch '/information' => 'users#update'
     get '/unsubscribe' => 'users#unsubscribe'
     patch '/withdraw' => 'users#withdraw'
-    
-    resources :reviews, only:[:update, :index, :show, :edit, :update, :destroy] do
-      post '/reviews/new' => 'user/reviews#create'
-    end
   end
   
   get '/books/search' => 'books#search'
   resources :books, only: [:new, :create, :update, :index, :show, :edit, :update, :destroy] do
-    resources :reviews, only:[:new, :create], module: :user
+    resources :reviews, only:[:new, :create, :index, :show, :edit, :update, :destroy], module: :user
   end
   
   namespace :admin do
