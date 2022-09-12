@@ -44,9 +44,16 @@
   .btn-secondary {
     background-color: #5a4138;
   }
-
-  .header {
-    border-bottom: 2px solid #5a4138; 
+  
+  .header a {
+    text-decoration: none;
+    color: #5a4138;
+    font-weight: bold;
+  }
+  
+  .header a:hover {
+    background-color: rgba(0,0,0,0.5);
+    color: orange;
   }
   
   .header-wrap {
