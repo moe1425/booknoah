@@ -30,6 +30,8 @@ ja:
               too_short: "は%{count}文字以上に設定して下さい"
               too_long: "は%{count}文字以下に設定して下さい"
               invalid: "は有効でありません"
+            password:
+              blank: "が入力されていません"
             name:
               blank: "を入力してください"
               too_short: "は%{count}文字以上に設定して下さい"

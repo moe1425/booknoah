@@ -2,7 +2,7 @@
     <%= render 'shared/error', model: @user %>
     <div class="col-sm-12 col-md-12 col-lg-7 mx-auto p-5 login-form border-box">
       <div class="row">
-        <h2>プロフィール編集</h2>
+        <h3 class=" fw-bold">プロフィール編集</h2>
       </div>
       <%= form_with model: @user, url: information_path, method: :patch do |f| %>
         <div class="form_group">

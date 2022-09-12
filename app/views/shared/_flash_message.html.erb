@@ -1,3 +1,5 @@
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: [key, "p-3"]) %>
-  <% end %>
+<% if flash[:notice].present? %>
+  <div class="p-3">
+    <%= flash[:notice] %>
+  </div>
+<% end %>

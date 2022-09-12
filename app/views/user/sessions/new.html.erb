@@ -6,6 +6,11 @@
       
       <div>
         <%= form_with model: @user, url: user_session_path do |f| %>
+          <% if flash[:alert].present? %>
+            <div class="alert alert-danger mt-3">
+              <%= flash[:alert] %>
+            </div>
+          <% end %>
           <div class="form_group">
             <br><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", autocomplete: "email", placeholder: "メールアドレス" %></br>
           </div>

@@ -23,9 +23,14 @@ class User::ReviewsController < ApplicationController
   end
 
   def edit
+    @book = Book.find(params[:book_id])
+    @review = Review.find(params[:id])
   end
   
   def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    redirect_to reviews_path
   end
   
   def destroy
