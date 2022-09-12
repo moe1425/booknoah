@@ -1,4 +1,4 @@
-<div class="col-lg-10 main-top">
+<div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5  main-top">
   <div class="col-sm-10 col-md-8 col-lg-7 mx-auto m-3 p-5 login-form border-box">
     <div class="row">
       <h2>アカウントを作成</h2>
@@ -17,9 +17,8 @@
         
         <div class="form_group">
           <% if @minimum_password_length %>
-            <!--<em>(%= @minimum_password_length %> characters minimum)</em>-->
+            <br><%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "パスワード(6文字以上)" %>
           <% end %>
-          <br><%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "パスワード(6文字以上)" %>
         </div>
         
         <div class="form_group">
