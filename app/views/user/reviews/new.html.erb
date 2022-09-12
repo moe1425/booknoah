@@ -12,9 +12,9 @@
           <br><%= f.label :content, '内容' %>
           <%= f.text_area :content, placeholder: "本の感想", class: 'form-control' %>
         </div>
-        <div class="form-group" id="star">
-          <%= f.label :star, '評価 ', class: 'col-md-3 col-form-label' %>
-          <%= f.hidden_field :star, id: :review_star %>
+        <div class="form-group">
+          <br><%= f.label :star, '評価 ', class: 'col-md-3 col-form-label' %>
+          <div id="star"></div>
         </div>
         <script>
           $('#star').empty();

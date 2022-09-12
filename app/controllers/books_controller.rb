@@ -30,6 +30,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @reviews = Review.all
     @book = Book.find_by(isbn: params[:isbn])
     @book_api_data = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
   end

@@ -1,2 +1,33 @@
-<h1>User::Reviews#edit</h1>
-<p>Find me in app/views/user/reviews/edit.html.erb</p>
+  <div class="row-lg-8 main-top">
+    <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5 text-center">
+      <div class="row">
+        <h3 class="mb-4 fw-bold">レビュー編集</h3>
+         <%= form_with model: @review, url: book_review_path, method: :patch do |f| %>
+        <div class="form-group">
+          <br><%= f.label :title, 'タイトル' %>
+          <%= f.text_field :title, placeholder: "感想のタイトル", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <br><%= f.label :content, '内容' %>
+          <%= f.text_area :content, placeholder: "本の感想", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <br><%= f.label :star, '評価 ', class: 'col-md-3 col-form-label' %>
+          <div id="star"></div>
+        </div>
+        <div class="form-group">
+          <%= link_to "編集を更新する", class: "btn btn-outline-success my-3" %>
+        </div>
+        <script>
+          $('#star_<%=review.id %>').empty();
+          $('#star_<%=review.id %>').raty({
+            size    : 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            score: <%= review.star %>,　
+            half: false,
+          });
+        </script>
+      </div>
+    </div>
+  </div>
