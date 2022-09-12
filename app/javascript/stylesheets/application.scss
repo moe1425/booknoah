@@ -6,10 +6,21 @@
   // }
   
  /*共通*/
-  body{
+  body {
     background-color: #FFF;
     font-family:'メイリオ', 'Yu Gothic', '游ゴシック', YuGothic, 'Meiryo', sans-serif;
     color: #5a4138;
+  }
+  
+  .notice {
+    color: green;
+  }
+  
+  
+  // エラーメッセージ
+  .error-massege {
+    color: red;
+    text-decoration-line: underline;
   }
   
   

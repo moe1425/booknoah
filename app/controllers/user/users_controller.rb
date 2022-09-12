@@ -12,8 +12,11 @@ class User::UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-    redirect_to my_page_path(@user.id)
+    if @user.update(user_params)
+      redirect_to my_page_path(@user.id), notice: 'ユーザー情報を保存しました'
+    else
+      render :edit
+    end
   end
   
 
@@ -25,7 +28,7 @@ class User::UsersController < ApplicationController
     @user = current_user
     @user.update(is_deleted: true)
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: '退会処理が完了しました'
   end
   
   private

@@ -67,6 +67,7 @@
                 <li><%= render 'books/book_search' %></li>
               <% elsif admin_signed_in? %>
                 <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+                <li><%= link_to "ユーザー一覧", admin_users %></li>
               <% else %>
                 <li><%= link_to "ホーム", root_path %></li>
                 <li><%= link_to "ブックノアとは", about_path %></li>
@@ -79,10 +80,10 @@
         </div>
       </nav>
     </div>
-    <div class="notice row p-3">
-      <%= render 'shared/flash_message' %>
-    </div>
     <div class="container-fluid">
+      <div class="notice text-center p-3">
+        <%= render 'shared/flash_message' %>
+      </div>
       <%= yield %>
     </div>
   </body>

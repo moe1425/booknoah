@@ -4,7 +4,6 @@
         <h3>レビューフォーム</h3>
       </div>
       <%= form_with model: Review.new, url: book_reviews_path(@book), local: true do |f| %>
-        <%#= render 'layouts/error_messages', object: f.object %>
         <div class="form-group">
           <br><%= f.label :title, 'タイトル' %>
           <%= f.text_field :title, placeholder: "感想のタイトル", class: 'form-control' %>

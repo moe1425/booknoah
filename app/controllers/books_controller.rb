@@ -18,8 +18,11 @@ class BooksController < ApplicationController
     @book.title = rbook.title
     @book.author = rbook.author
     @book.image_url = rbook.large_image_url
-    @book.save
-    redirect_to new_book_path(id: @book.title, isbn: @book.isbn)
+    if @book.save
+      redirect_to new_book_path(id: @book.title, isbn: @book.isbn), notice: '登録が完了しました'
+    else
+      render 'books/new'
+    end
   end
   
   def index
@@ -39,14 +42,17 @@ class BooksController < ApplicationController
   def update
     @book = Book.find_by(isbn: params[:isbn])
     rbook = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
-    @book.update(title: rbook.title, author: rbook.author, image_url: rbook.large_image_url, is_read: params[:is_read] )
-    redirect_to book_path(id: @book.title, isbn: @book.isbn)
+    if @book.update(title: rbook.title, author: rbook.author, image_url: rbook.large_image_url, is_read: params[:is_read] )
+      redirect_to book_path(id: @book.title, isbn: @book.isbn), notice: '編集を保存しました'
+    else
+      render :edit
+    end
   end
   
   def destroy
     @book = Book.find_by(isbn: params[:isbn])
     @book.destroy
-    redirect_to books_path
+    redirect_to books_path, notice: '本の削除が完了しました'
     
   end
   
