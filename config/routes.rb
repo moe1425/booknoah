@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :reviews, only:[:new, :create, :index, :show, :edit, :update, :destroy], module: :user
   end
   
+  
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :reviews, only: [:index, :show, :edit, :update]
