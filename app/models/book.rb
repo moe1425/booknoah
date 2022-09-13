@@ -1,6 +1,5 @@
 class Book < ApplicationRecord
     
     has_many :reviews, dependent: :destroy
-    
-    validates :is_read, presence: true
+    has_many :reviewed_users, through: :reviews, source: :user
 end
