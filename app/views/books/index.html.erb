@@ -7,10 +7,10 @@
             <div class="col-md-7 mx-auto">
               <div class="row">
                 <div class="col-md-6 text-center">
-                  <%= link_to (image_tag(book.image_url)), book_path(id: book.title, isbn: book.isbn) %>
+                  <%= link_to (image_tag(book.image_url)), book_path(book) %>
                 </div>
                 <div class="col-md-6 text-start">
-                  <%= link_to book.title, book_path(id: book.title, isbn: book.isbn) %>
+                  <%= link_to book.title, book_path(book) %>
                   <%= book.author %>
                   <div class="pt-3">
                     <% if book.is_read == true %>
@@ -20,7 +20,7 @@
                     <% end %>
                   </div>
                   <div class="pt-2">
-                    <%= link_to '削除', book_path(id: book.title, isbn: book.isbn), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %>
+                    <%= link_to '削除', book_path(book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" %>
                   </div>
                 </div>
               </div>

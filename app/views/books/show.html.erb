@@ -2,7 +2,7 @@
     <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5">
       <div class="row">
         <div class="book-deta text-center">
-          <%= link_to @book_api_data.item_url do %>
+          <%= link_to @book.item_url do %>
             <%= (image_tag(@book.image_url)) %></br>
           <% end %>
           <br><%= @book.title%>
@@ -13,7 +13,7 @@
           <% else %>
             <h5 class="text-success font-weight-bold">読み終わった</h5>
           <% end %>
-          <%= link_to "編集する", edit_book_path(id: @book.title, isbn: @book.isbn), class: "btn btn-outline-secondary" %>
+          <%= link_to "編集する", edit_book_path(@book), class: "btn btn-outline-secondary" %>
           <%= link_to "レビューを投稿する",  new_book_review_path(@book), class: "btn btn-primary" %></br>
           <br><%= link_to "一覧に戻る", books_path, class: "btn btn-outline-primary" %>
         </div>

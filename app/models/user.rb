@@ -5,8 +5,13 @@
       :recoverable, :rememberable, :validatable
     
     has_many :reviews, dependent: :destroy
+    has_many :reviewed_books, through: :reviews, source: :book
     has_many :favorites, dependent: :destroy
-    has_one_attached :profile_imag
+    has_many :favorite_reviews, through: :favorite, source: :review
+    has_many :user_books, dependent: :destroy
+    has_many :books, through: :user_books
+    has_one_attached :profile_image
+    
     
     validates :name, presence: true, length: { minimum: 2, maximum: 50 }
     validates :introduction, length: { maximum: 255 }

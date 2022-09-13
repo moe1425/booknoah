@@ -26,12 +26,14 @@ Rails.application.routes.draw do
     get '/unsubscribe' => 'users#unsubscribe'
     patch '/withdraw' => 'users#withdraw'
     
-    resources :reviews, only:[:index]
+    resources :reviews, only:[:index] do
+      resource :favorites, only: [:create, :destroy]
+    end
   end
   
   get '/books/search' => 'books#search'
   resources :books, only: [:new, :create, :update, :index, :show, :edit, :update, :destroy] do
-    resources :reviews, only:[:new, :create, :show, :edit, :update, :destroy], module: :user
+    resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy], module: :user
   end
   
   

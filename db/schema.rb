@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_13_062824) do
+ActiveRecord::Schema.define(version: 2022_09_13_105209) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_062824) do
     t.string "title"
     t.string "author"
     t.integer "isbn", null: false
+    t.string "item_url"
     t.string "image_url"
     t.boolean "is_read", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_062824) do
     t.integer "review_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "review_id"], name: "index_favorites_on_user_id_and_review_id", unique: true
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -78,7 +80,19 @@ ActiveRecord::Schema.define(version: 2022_09_13_062824) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["user_id", "book_id"], name: "index_reviews_on_user_id_and_book_id", unique: true
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "user_books", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.boolean "is_read", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_user_books_on_book_id"
+    t.index ["user_id", "book_id"], name: "index_user_books_on_user_id_and_book_id", unique: true
+    t.index ["user_id"], name: "index_user_books_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,4 +114,6 @@ ActiveRecord::Schema.define(version: 2022_09_13_062824) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
+  add_foreign_key "user_books", "books"
+  add_foreign_key "user_books", "users"
 end

@@ -4,7 +4,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :author
       t.integer :isbn, null: false
-      t.string :url
+      t.string :item_url
       t.string :image_url
       t.boolean :is_read, null: false, default: false
 

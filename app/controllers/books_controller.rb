@@ -9,57 +9,65 @@ class BooksController < ApplicationController
   end
   
   def new
-    @book = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
-  end
-  
-  def create
-    @book = Book.new(isbn_params)
+    @book = Book.find_or_initialize_by(isbn: params[:isbn])
     rbook = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
     @book.title = rbook.title
     @book.author = rbook.author
     @book.image_url = rbook.large_image_url
+    @book.item_url = rbook.item_url
+  end
+  
+  def create
+    @book = Book.find_or_initialize_by(isbn: params.dig(:book, :isbn))
+    @book.assign_attributes(book_params)
     if @book.save
-      redirect_to new_book_path(id: @book.title, isbn: @book.isbn), notice: '登録が完了しました'
+      @user_book = current_user.user_books.find_or_initialize_by(book_id: @book.id)
+      @user_book.is_read =params.dig(:book, :is_read)
+      @user_book.save!
+      redirect_to book_path(@book), notice: '登録が完了しました'
     else
       render 'books/new'
     end
   end
   
   def index
-    @books = Book.page(params[:page]).per(10)
+    @books = current_user.books.page(params[:page]).per(10)
   end
 
   def show
-    @reviews = Review.all
-    @book = Book.find_by(isbn: params[:isbn])
-    @book_api_data = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
+    @book = Book.find(params[:id])
+    @reviews = @book.reviews
   end
   
   def edit
-    @book = Book.find_by(isbn: params[:isbn])
-    @book_api_data = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
+    @book = Book.find(params[:id])
+    @user_book = current_user.user_books.find_by(book_id: @book.id)
   end
   
   def update
-    @book = Book.find_by(isbn: params[:isbn])
-    rbook = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
-    if @book.update(title: rbook.title, author: rbook.author, image_url: rbook.large_image_url, is_read: params[:is_read] )
-      redirect_to book_path(id: @book.title, isbn: @book.isbn), notice: '編集を保存しました'
+    @book = Book.find(params[:id])
+    @user_book = current_user.user_books.find_by(book_id: @book.id)
+    if @user_book.update(user_book_params)
+      redirect_to book_path(@book), notice: '編集を保存しました'
     else
       render :edit
     end
   end
   
   def destroy
-    @book = Book.find_by(isbn: params[:isbn])
-    @book.destroy
+    @user_book = current_user.user_books.find_by(book_id: params[:id])
+    @user_book.destroy if @user_book
     redirect_to books_path, notice: '本の削除が完了しました'
     
   end
   
   private
   
-  def isbn_params
-    params.permit(:isbn, :is_read)
+  def book_params
+    params.require(:book).permit(:isbn, :title, :author, :image_url, :item_url, :is_read)
+  end
+  
+  def user_book_params
+    params.require(:book).permit(:is_read)
   end
 end

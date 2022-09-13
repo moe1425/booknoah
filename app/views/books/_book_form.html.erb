@@ -1,0 +1,23 @@
+  <div class="book-deta">
+    <%= link_to (image_tag(@book.image_url)), @book.item_url %></br>
+      <br><%= @book.title %>
+      <br><%= @book.author %>
+      <%= form_with model: @book do |f| %>
+        <div class="form-group">
+          <td><%= f.label :is_read, "読書状態" %></td>
+          <td>
+            <%= f.radio_button :is_read, :true, checked: !!@user_book&.is_read.to_s %>
+            <%= f.label :is_read, "読み終わった", value: :true %>
+            <%= f.radio_button :is_read, :false %>
+            <%= f.label :is_read, "読んでない", value: :false %>
+          </td>
+        </div>
+        <%= f.hidden_field :isbn %>
+        <%= f.hidden_field :title %>
+        <%= f.hidden_field :author %>
+        <%= f.hidden_field :image_url %>
+        <%= f.hidden_field :item_url %>
+        <%= f.submit '登録', class: "btn btn-outline-success my-3" %>
+      <% end %>
+    </div>
+  </div>

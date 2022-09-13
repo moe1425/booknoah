@@ -16,16 +16,15 @@ class User::ReviewsController < ApplicationController
   end
 
   def index
-    @books = Book.all
-    @reviews = Review.page(params[:page]).per(10)
+    @reviews = current_user.reviews.page(params[:page]).per(10)
   end
   
   def show
   end
 
   def edit
-    @book = Book.find(params[:book_id])
-    @review = Review.find_by(params[:id])
+    @review = Review.find(params[:id])
+    @book = Book.find(params[:id])
   end
   
   def update
@@ -35,7 +34,7 @@ class User::ReviewsController < ApplicationController
   end
   
   def destroy
-    @book = Book.find(params[:book_id])
+    @book = Book.find(params[:id])
     @review = Review.find_by(params[:id])
     @review.destroy
     redirect_to reviews_path

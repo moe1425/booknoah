@@ -14,7 +14,7 @@
                       <% if review.user == current_user %>
                         <%= link_to book_review_path(id: review.book.id, book_id: review.book_id),  method: :delete, 
                         data: { confirm: '本当に消しますか？' }, class: "delete_link" do %>
-                          <i class="far fa-times"></i>
+                          <i class="fas fa-times"></i>
                         <% end %>
                       <% end %>
                     </div>
@@ -30,7 +30,8 @@
                   <div class="text-end pt-1">
                     <% if review.user == current_user %>
                       <i class="fas fa-pencil-alt"></i>
-                      <%= link_to "編集する", edit_book_review_path(id: review.book.id, book_id: review.book_id) %>
+                      <%= link_to "編集する", edit_book_review_path(id: review.id, book_id: review.book_id) %> | 
+                      <%= link_to "詳細画面に戻る", book_path(review.book.id) %>
                     <% end %>
                   </div>
                 </div>
