@@ -2,7 +2,7 @@
     <%= render 'shared/error', model: @book %>
     <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5 text-center">
       <div class="row">
-        <h3>読書状態の編集</h3>
+        <h3 class="mb-4 fw-bold">読書状態の編集</h3>
       </div>
       <div class="book-deta">
         <%= link_to @book_api_data.item_url do %>
@@ -12,7 +12,7 @@
         <br><%= @book.author %>
         <%= form_with model_name: @book, url: book_path, method: :patch do |f| %>
           <div class="form-group">
-            <td><%= f.label :is_read, "読書状態" %></td>
+            <td><%= f.label :is_read, "読書状態: " %></td>
             <td>
               <%= f.radio_button :is_read, :true %>
               <%= f.label :is_read, "読み終わった", value: :true %>

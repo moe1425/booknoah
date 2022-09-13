@@ -10,6 +10,14 @@
                   <%= image_tag review.book.image_url %>
                 </div>
                 <div class="col-md-6 text-start">
+                    <div class="text-end">
+                      <% if review.user == current_user %>
+                        <%= link_to book_review_path(id: review.book.id, book_id: review.book_id),  method: :delete, 
+                        data: { confirm: '本当に消しますか？' }, class: "delete_link" do %>
+                          <i class="far fa-times"></i>
+                        <% end %>
+                      <% end %>
+                    </div>
                   <h4><%= review.book.title %></h4>
                   <p><%= review.book.author %></p>
                   <h5 class="pt-3"><%= review.title %></h5>
@@ -19,7 +27,12 @@
                       <%= simple_format(review.content) %>
                     </div>
                   </div>
-                  <%= link_to "編集する",  reviews_path(id: review.book.id) %>
+                  <div class="text-end pt-1">
+                    <% if review.user == current_user %>
+                      <i class="fas fa-pencil-alt"></i>
+                      <%= link_to "編集する", edit_book_review_path(id: review.book.id, book_id: review.book_id) %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
