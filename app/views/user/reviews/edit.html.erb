@@ -1,33 +1,37 @@
   <div class="row-lg-8 main-top">
-    <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5 text-center">
+    <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5">
       <div class="row">
         <h3 class="mb-4 fw-bold">レビュー編集</h3>
          <%= form_with model: @review, url: book_review_path, method: :patch do |f| %>
-        <div class="form-group">
-          <br><%= f.label :title, 'タイトル' %>
-          <%= f.text_field :title, placeholder: "感想のタイトル", class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <br><%= f.label :content, '内容' %>
-          <%= f.text_area :content, placeholder: "本の感想", class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <br><%= f.label :star, '評価 ', class: 'col-md-3 col-form-label' %>
-          <div id="star"></div>
-        </div>
-        <div class="form-group">
-          <%= link_to "編集を更新する", class: "btn btn-outline-success my-3" %>
-        </div>
-        <script>
-          $('#star_<%=review.id %>').empty();
-          $('#star_<%=review.id %>').raty({
-            size    : 36,
-            starOff: '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            score: <%= review.star %>,　
-            half: false,
-          });
-        </script>
+          <div class="form-group">
+            <br><%= f.label :title, 'タイトル' %>
+            <%= f.text_field :title, placeholder: "感想のタイトル", class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <br><%= f.label :content, '内容' %>
+            <%= f.text_area :content, placeholder: "本の感想", class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <br><%= f.label :star, '評価 ', class: 'col-md-3 col-form-label' %>
+            <div id="star_<%=@review.id %>"></div>
+          </div>
+          <div class="form-group text-center">
+              <%= f.submit "編集を更新する", class: "btn btn-outline-success my-3" %>
+          </div>
+          <div class="text-center">
+            <%= link_to "戻る", reviews_path, class: "btn btn-outline-primary my-3" %>
+          </div>
+          <script>
+            $('#star_<%=@review.id %>').empty();
+            $('#star_<%=@review.id %>').raty({
+              size    : 36,
+              starOff: '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              score: <%= @review.star %>,　
+              half: false,
+            });
+          </script>
+        <% end %>
       </div>
     </div>
   </div>

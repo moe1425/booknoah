@@ -1,7 +1,9 @@
 @import "~bootstrap/scss/bootstrap.scss";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+  /* 背景の画像を指定 */
   // .main-container {
-  //   background-image: image-url('images/top.jpg');
+  //   background-image: image-url('top.jpg'); 
   //   background-size: cover;
   // }
   
@@ -14,6 +16,10 @@
   
   .notice {
     color: green;
+  }
+  
+  .delete_link {
+    color: red;
   }
   
   
@@ -54,6 +60,12 @@
   
   .btn-secondary {
     background-color: #5a4138;
+  }
+  
+  .btnx-orange-light {
+    color:var(--bs-orange);
+    background:var(--bs-white); 
+    border: 2px solid #FFCC80; 
   }
   
   .header a {
