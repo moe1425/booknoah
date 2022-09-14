@@ -9,8 +9,9 @@ class BooksController < ApplicationController
   end
   
   def new
-    @book = Book.find_or_initialize_by(isbn: params[:isbn])
+    @book = Book.new
     rbook = RakutenWebService::Books::Book.search(isbn: params[:isbn]).first
+    @book.isbn = rbook.isbn
     @book.title = rbook.title
     @book.author = rbook.author
     @book.image_url = rbook.large_image_url
@@ -31,11 +32,12 @@ class BooksController < ApplicationController
   end
   
   def index
-    @books = current_user.books.page(params[:page]).per(10)
+    @books = current_user.user_books.page(params[:page]).per(10)
   end
 
   def show
     @book = Book.find(params[:id])
+    @user_book = current_user.user_books.find_by(book_id: @book.id)
     @reviews = @book.reviews
     @reviews_comment = ReviewComment.new
   end

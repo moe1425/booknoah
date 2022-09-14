@@ -1,0 +1,8 @@
+<h1>User::Reviews#favorites</h1>
+<p>Find me in app/views/user/reviews/favorites.html.erb</p>
+
+<% @favorites.each do |favorite| %>
+    <div>
+        <%= favorite.user.name %>
+    </div>
+<% end %>
