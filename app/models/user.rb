@@ -10,6 +10,7 @@
     has_many :favorite_reviews, through: :favorite, source: :review
     has_many :user_books, dependent: :destroy
     has_many :books, through: :user_books
+    has_many :review_comments, dependent: :destroy
     has_one_attached :profile_image
     
     

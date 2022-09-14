@@ -3,4 +3,5 @@ class UserBook < ApplicationRecord
   belongs_to :book
   
   validates :is_read, inclusion: {in: [true, false]}
+  
 end

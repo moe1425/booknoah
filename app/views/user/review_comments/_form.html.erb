@@ -1,0 +1,10 @@
+  <%= form_with model: [@review, @review_comment], do |f| %>
+    <div class="row mb-3">
+      <div class="form-group col-12">
+        <%= f.text_area :comment, rows: '3', placeholder: "コメントを入力", class: "comment-form form-control" %>
+      </div>
+      <div class="col-12 text-right">
+        <%= f.submit "送信する", class: "btn btn-primary comment-btn" %>
+      </div>
+    </div>
+  <% end %>
