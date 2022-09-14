@@ -1,6 +1,6 @@
 class User::ReviewsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :ensure_correct_user, only: [:edit]
+  before_action :ensure_correct_user, only: [:edit, :update]
   
   def new
     @book = Book.find(params[:book_id])
@@ -20,8 +20,7 @@ class User::ReviewsController < ApplicationController
   end
   
   def favorites
-    favorites = @review.favorites.find_by(params[:id])
-    @favorite_users = User.find(favorites)
+    @favorites = Favorite.where(review_id: params[:review_id])
   end
 
   def edit
@@ -48,4 +47,9 @@ class User::ReviewsController < ApplicationController
     params.require(:review).permit(:title, :content, :star)
   end
   
+  def ensure_correct_user
+    if @post.user != current_user
+      redirect_to reviews_path
+    end
+  end
 end

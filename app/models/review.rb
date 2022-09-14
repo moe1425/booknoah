@@ -12,8 +12,8 @@ class Review < ApplicationRecord
   }, presence: true
   
   
-  def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+  def favorited_by?(review, user)
+    Favorite.exists?(review_id: review.id, user_id: user.id)
   end
   
 end
