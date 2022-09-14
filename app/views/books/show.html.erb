@@ -22,7 +22,7 @@
           <div class="row mb-3 border-bottom p-2 border-opacity-75">
             <div class="col-md-7 mx-auto">
               <div class="row">
-                <div class="col-md-6 text-start">
+                <div class="col-md-12 text-start">
                   <%= image_tag review.user.get_profile_image(50, 50) %>
                   <%= review.user.name %>
                   <h5 class="pt-3"><%= review.title %></h5>
@@ -30,10 +30,12 @@
                   <div class="pt-2">
                     <%= simple_format(review.content) %>
                   </div>
+                  <%= render 'user/favorites/favorite', review: review %>
                 </div>
+                  
               </div>
             </div>
-          </div>
+
           <script>
             $('#star_<%=review.id %>').empty();
             $('#star_<%=review.id %>').raty({

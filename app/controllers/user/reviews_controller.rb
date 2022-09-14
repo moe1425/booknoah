@@ -19,7 +19,9 @@ class User::ReviewsController < ApplicationController
     @reviews = current_user.reviews.page(params[:page]).per(10)
   end
   
-  def show
+  def favorites
+    favorites = @review.favorites.find_by(params[:id])
+    @favorite_users = User.find(favorites)
   end
 
   def edit

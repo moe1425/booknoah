@@ -37,6 +37,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @reviews = @book.reviews
+    @reviews_comment = ReviewComment.new
   end
   
   def edit
