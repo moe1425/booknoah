@@ -18,6 +18,6 @@
     private
     
     def review_comment_params
-      params.require(:review_comment).permit(:comment)
+      params.require(:review_comment).permit(:comment).merge(user_id: current_user.id)
     end
   end

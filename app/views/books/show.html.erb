@@ -17,14 +17,16 @@
           <%= link_to "レビューを投稿する",  new_book_review_path(@book), class: "btn btn-primary" %></br>
           <br><%= link_to "一覧に戻る", books_path, class: "btn btn-outline-primary" %>
         </div>
-        <h3 class="mb-4　mt-4 fw-bold">みんなのレビュー</h3>
+        <h3 class="mb-4 mt-4 fw-bold">みんなのレビュー</h3>
         <% @reviews.each do |review| %>
           <div class="row mb-3 border-bottom p-2 border-opacity-75">
             <div class="col-md-7 mx-auto">
               <div class="row">
                 <div class="col-md-12 text-start">
                   <%= image_tag review.user.get_profile_image(50, 50) %>
-                  <%= review.user.name %>
+                  <%= link_to my_page_path(review.user) do %>
+                    <%= review.user.name %>
+                  <% end %>
                   <h5 class="pt-3"><%= review.title %></h5>
                   <div id="star_<%=review.id %>"></div>
                   <div class="pt-2">
@@ -35,7 +37,7 @@
                     <%= render 'user/review_comments/form', review: review %>
                   </div>
                   <div class="comments mt-3">
-                    <%= render 'user/review_comments/index', review: review %>
+                    <%#= render 'user/review_comments/index', review: review %>
                   </div>
                 </div>
               </div>

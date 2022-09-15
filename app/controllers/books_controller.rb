@@ -39,7 +39,8 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user_book = current_user.user_books.find_by(book_id: @book.id)
     @reviews = @book.reviews
-    @reviews_comment = ReviewComment.new
+    @review_comment = ReviewComment.new
+    # @reviews_comments = @review.review_comments.includes(:user)
   end
   
   def edit
