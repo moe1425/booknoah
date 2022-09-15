@@ -1,8 +1,22 @@
-<h1>User::Reviews#favorites</h1>
-<p>Find me in app/views/user/reviews/favorites.html.erb</p>
-
-<% @favorites.each do |favorite| %>
-    <div>
-        <%= favorite.user.name %>
+   <div class="row-lg-8 main-top">
+    <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5">
+      <div class="row">
+        <h3 class="mb-4 mt-4 fw-bold">いいねした人</h3>
+        <% @favorites.each do |favorite| %>
+          <div class="row mb-3 border-bottom p-2 border-opacity-75">
+            <div class="row">
+              <div class="col-md-3">
+                <%= image_tag favorite.user.get_profile_image(100, 100) %>
+              </div>
+              <div class="col-md-6 pt-4">
+                <%= link_to my_page_path(favorite.user.id) do %>
+                  <%= favorite.user.name %>
+                <% end %>
+              </div>
+              <%= simple_format(favorite.user.introduction) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-<% end %>
+  </div>
