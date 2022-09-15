@@ -1,0 +1,40 @@
+  <div class="row-lg-8 main-top">
+    <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5">
+      <div class="row">
+        <h3>レビュー一覧</h3>
+      </div>
+      <div class="text-center">
+        <% @reviews.each do |review| %>
+          <div class="row mb-3 border-bottom p-2 border-opacity-75">
+            <div class="col-md-7 mx-auto">
+              <div class="row">
+                <div class="col-md-12 text-start">
+                  <%= image_tag review.user.get_profile_image(50, 50) %>
+                  <%= link_to admin_review_path(review.id) do %>
+                    <%= review.user.name %>
+                  <% end %>
+                  <h5 class="pt-3"><%= review.title %></h5>
+                  <div id="star_<%=review.id %>"></div>
+                  <div class="pt-2">
+                    <%= simple_format(review.content) %>
+                  </div>
+                  <script>
+                    $('#star_<%=review.id %>').empty();
+                    $('#star_<%=review.id %>').raty({
+                      size    : 36,
+                      starOff: '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      score: <%= review.star %>,　
+                      half: false,
+                      readOnly: true
+                    });
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <%= paginate @reviews %>
+      </div>
+    </div>
+  </div>
