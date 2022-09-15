@@ -18,6 +18,14 @@
                 <th>自己紹介</th>
                 <th><%= @user.introduction %></th>
               </tr>
+              <tr>
+                <th>登録した本</th>
+                <th><%= @books.count %>冊</th>
+              </tr>
+              <tr>
+                <th>読んだ本</th>
+                <th></th>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -29,7 +37,7 @@
           </div>
           <%= link_to "本一覧", books_path, class: "btn btn-light btnx-orange-light" %>
           <%= link_to "レビュー一覧", reviews_path, class: "btn btn-light btnx-orange-light" %>
-        </div> 
+        </div>
       </div>
     </div>
   </div>

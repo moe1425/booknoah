@@ -4,6 +4,7 @@ class User::UsersController < ApplicationController
   
   def show
     @user = current_user
+    @books = current_user.user_books.all
   end
 
   def edit
