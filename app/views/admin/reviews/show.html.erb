@@ -1,0 +1,47 @@
+  <div class="row-lg-8 main-top">
+    <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5">
+      <div class="row">
+        <h3>レビュー詳細画面</h3>
+      </div>
+          <div class="text-center">
+        <table class="table">
+          <tr>
+            <th>ユーザー画像</th>
+            <br><td><%= image_tag @review.user.get_profile_image(100, 100), class: "profile-img" %></td>
+          </tr>
+          <tr>
+            <th>ユーザー名</th>
+            <td><%= @review.user.name %></td>
+          </tr>
+          <tr>
+            <th>レビュータイトル</th>
+            <td><%= @review.title %></td>
+          </tr>
+          <tr>
+            <th>レビュー内容</th>
+            <td><%= @review.content %></td>
+          </tr>
+          <tr>
+            <th>レビュー評価</th>
+            <td><div id="star_<%= @review.id %>"></div></td>
+          </tr>
+        </table>
+        <script>
+          $('#star_<%= @review.id %>').empty();
+          $('#star_<%= @review.id %>').raty({
+            size    : 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            score: <%= @review.star %>,　
+            half: false,
+            readOnly: true
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <p class="text-center">
+      <%= link_to "編集する", edit_admin_review_path(@review.id), class: 'btn btn-outline-secondary btn-sm m-3' %>
+    </p>
+  </div>
