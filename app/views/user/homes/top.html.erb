@@ -1,14 +1,38 @@
   <div class="row main-container">
-    
-  </div>
-  <div class="row">
-    <div class="top-btn col-12 col-sm-3 offset-sm-1 text-center">
-      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary my-3" %>
-    </div>
-    <div class="top-btn col-12 col-sm-3 text-center">
-      <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary mb-3 my-sm-3" %>
-    </div>
-    <div class="top-btn col-12 col-sm-3 text-center">
-      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary mb-3 my-sm-3 sign_in", method: :post %>
+  
+    <div class="row">
+      <!--pc画面用-->
+      <div class="d-none d-md-block list-unstyled list-inline mt-3 text-center">
+        <div class="text-end">
+          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary btn-lg my-3" %>
+        </div>
+        <div class="text-end">
+          <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary btn-lg mb-3 my-sm-3" %>
+        </div>
+        <div class="text-end">
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-lg mb-3 my-sm-3 sign_in", method: :post %>
+        </div>
+        <br><h1 class=" message text-center fw-bold">
+          本を集めに行こう！！<br>
+          まだ見ぬ仲間と出会うために
+        </h1>
+      </div>
+      
+      <!--sp画面用-->
+      <div class="d-block d-md-none position-fixed d-flex flex-column p-2">
+        <div class="text-center">
+          <%= link_to "新規登録", new_user_registration_path, class: "btn  btn-secondary my-3" %>
+        </div>
+        <div class="text-center">
+          <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary mb-3 my-sm-3" %>
+        </div>
+        <div class="text-center">
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary mb-3 my-sm-3 sign_in", method: :post %>
+        </div>
+        <br><h1 class=" message text-center fw-bold">
+          本を集めに行こう！！<br>
+          まだ見ぬ仲間と出会うために
+        </h1>
+      </div>
     </div>
   </div>
