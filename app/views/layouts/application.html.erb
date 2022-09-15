@@ -7,6 +7,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -40,6 +41,8 @@
                 <li class="list-inline-item"><%= link_to "マイレビュー", reviews_path %></li>
                 <li class="list-inline-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               <% elsif admin_signed_in? %>
+                <li class="list-inline-item"><%= link_to "ユーザー一覧", admin_users_path %></li>
+                <li class="list-inline-item"><%= link_to "レビュー一覧", admin_reviews_path %></li>
                 <li class="list-inline-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
               <% else %>
                 <li class="list-inline-item"><%= link_to "ホーム", root_path %></li>
@@ -65,8 +68,9 @@
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
                 <li><%= render 'books/book_search' %></li>
               <% elsif admin_signed_in? %>
+                <li><%= link_to "ユーザー一覧", admin_users_path %></li>
+                <li><%= link_to "レビュー一覧", admin_reviews_path %></li>
                 <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-                <li><%= link_to "ユーザー一覧", admin_users %></li>
               <% else %>
                 <li><%= link_to "ホーム", root_path %></li>
                 <li><%= link_to "新規登録", new_user_registration_path %></li>
