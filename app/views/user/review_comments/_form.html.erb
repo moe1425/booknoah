@@ -1,4 +1,4 @@
-  <%= form_with model: [review, review.review_comments.new], url: book_review_review_comments_path(@book.id, review.id), local: true do |f| %>
+  <%= form_with model: [review, ReviewComment.new], url: book_review_review_comments_path(@book.id, review.id), local: true do |f| %>
     <div class="row mb-3">
       <div class="form-group col-12">
         <%= f.text_area :comment, rows: '3', placeholder: "コメントを入力", class: "comment-form form-control" %>
