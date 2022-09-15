@@ -5,6 +5,7 @@ class User::UsersController < ApplicationController
   def show
     @user = current_user
     @books = current_user.user_books.all
+    @book_read = current_user.user_books.where(is_read: true)
   end
 
   def edit
