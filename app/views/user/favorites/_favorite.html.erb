@@ -8,5 +8,5 @@
         <span class="favorite-false favorite-btn"><i class="far fa-heart"></i></span>
       <% end %>
     <% end %>
-    いいね<%= link_to "（#{review.favorites.count}）" ,book_review_review_favorites_path(review.book.id, review.id) %>
+    いいね<%= link_to "（#{review.favorites.count}）", book_review_review_favorites_path(review.book.id, review.id) %>
   </div>

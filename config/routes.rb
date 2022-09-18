@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :books, only: [:new, :create, :update, :index, :show, :edit, :update, :destroy] do
     resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy], module: :user do
       resource :favorites, only: [:create, :destroy]
-      get 'reviews/:id/favorites' => 'reviews#favorites', as: "review_favorites"
+      get 'favorites' => 'reviews#favorites', as: "review_favorites"
       resources :review_comments, only: [:create, :destroy]
     end
   end

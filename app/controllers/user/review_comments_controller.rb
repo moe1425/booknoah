@@ -9,7 +9,6 @@
     end
     
     def destroy
-      @book = Book.find(params[:book_id])
       @review = Review.find(params[:review_id])
       @review_comment = ReviewComment.find(params[:id])
       @review_comment.destroy
