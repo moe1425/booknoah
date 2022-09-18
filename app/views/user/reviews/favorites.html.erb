@@ -1,7 +1,7 @@
    <div class="row-lg-8 main-top">
     <div class="col-sm-12 col-md-12 col-lg-8 mx-auto p-5">
       <div class="row">
-        <h3 class="mb-4 mt-4 fw-bold">いいねした人</h3>
+        <h3 class="mb-4 mt-4 fw-bold"><%= @book.title %>のレビューにいいねした人</h3>
         <% @favorites.each do |favorite| %>
           <div class="row mb-3 border-bottom p-2 border-opacity-75">
             <div class="row">

@@ -20,6 +20,7 @@ class User::ReviewsController < ApplicationController
   end
   
   def favorites
+    @book = Book.find(params[:book_id])
     @favorites = Favorite.where(review_id: params[:review_id])
   end
 
