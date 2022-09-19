@@ -19,7 +19,7 @@ class Review < ApplicationRecord
   
   # いいね通知
   def create_notification_favorite(current_user)
-    favorited = Notification.where(["visitor_id = ? and visited_id = ? and review_id = ? and action = ?",current_user.id, user_id, id, "favorite"])
+    favorited = Notification.where(["visiter_id = ? and visited_id = ? and review_id = ? and action = ?",current_user.id, user_id, id, "favorite"])
     
     if favorited.blank?
       notification = current_user.active_notifications.new(
@@ -27,7 +27,7 @@ class Review < ApplicationRecord
         visited_id: user_id,
         action: "favorite"
       )
-      if notification.visitor_id != notification.visited_id
+      if notification.visiter_id != notification.visited_id
         notification.save
       end
     end
