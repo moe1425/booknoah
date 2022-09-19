@@ -5,6 +5,7 @@
       @review = Review.find(params[:review_id])
       favorite = current_user.favorites.new(review_id: @review.id)
       favorite.save
+      @review.create_notification_favorite(current_user)
     end
     
     def destroy

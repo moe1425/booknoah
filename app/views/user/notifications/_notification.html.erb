@@ -1,0 +1,21 @@
+  <% review = notification.review %>
+  <% visitor = notification.visitor %>
+  <% action = notification.action %>
+  <div class="notifications my-3 py-2 pl-3">
+    <% if action == "comment" %>
+      <%= visitor.name %>さんが
+      <% if review.user != current_user %>
+        <%= link_to "#{review.user.name}さんのレビューに", review_path(review.id) %>
+      <% else %>
+        <%= link_to "あなたのレビューに", review_path(review.id) %>
+      <% end %>
+      にコメントしました
+      <div class="notification-comment ml-3">
+        - <%= notification.review_comment %>
+      </div>
+    <% elsif action == "favorite" %>
+      <%= visitor.name %>さんが
+      <%= link_to "あなたのレビューに", review_path(review.id) %>
+      にいいねしました
+    <% end %>
+  </div>

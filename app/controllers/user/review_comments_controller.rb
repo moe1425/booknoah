@@ -6,6 +6,8 @@
       @review_comment = current_user.review_comments.new(review_comment_params)
       @review_comment.review_id = @review.id
       @review_comment.save
+      @review_comments = @review.review_comments
+      @review.create_notification_comment(current_user, @review_comment.id)
     end
     
     def destroy
