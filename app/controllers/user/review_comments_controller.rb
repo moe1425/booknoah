@@ -8,6 +8,7 @@
       @review_comment.save
       @review_comments = @review.review_comments
       @review.create_notification_comment(current_user, @review_comment.id)
+      respond_to :js
     end
     
     def destroy

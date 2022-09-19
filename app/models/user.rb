@@ -13,7 +13,7 @@
     has_many :review_comments, dependent: :destroy
     
     # 通知を送ったユーザー、通知を送られたユーザー
-    has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
+    has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
     has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
     
     has_one_attached :profile_image
