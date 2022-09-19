@@ -17,7 +17,12 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
+  
+  
   scope module: :user do
+    resources :notifications, only: :index do
+      delete 'notifications/destroy_all' => 'notifications#destroy_all'
+    end
     root to: 'homes#top'
     get '/about' => 'homes#about'
     get '/my_page' => 'users#show'

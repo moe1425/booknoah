@@ -39,6 +39,10 @@
                 <li class="list-inline-item"><%= link_to "ホーム", my_page_path %></li>
                 <li class="list-inline-item"><%= link_to "本一覧",  books_path %></li>
                 <li class="list-inline-item"><%= link_to "マイレビュー", reviews_path %></li>
+                <li class="list-inline-item">
+                  <%= content_tag(:span, content_tag(:i, "", class: "fas fa-circle"), class: "notification-check") if unchecked_notificatons.any? %>
+                  <%= link_to "通知", notifications_path %>
+                </li>
                 <li class="list-inline-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               <% elsif admin_signed_in? %>
                 <li class="list-inline-item"><%= link_to "ユーザー一覧", admin_users_path %></li>
@@ -65,6 +69,10 @@
                 <li><%= link_to "ホーム", my_page_path %></li>
                 <li><%= link_to "本一覧",  books_path %></li>
                 <li><%= link_to "マイレビュー", reviews_path %></li>
+                <li class="list-inline-item">
+                  <%= content_tag(:span, content_tag(:i, "", class: "fas fa-circle"), class: "notification-check") if unchecked_notificatons.any? %>
+                  <%= link_to "通知", notifications_path %>
+                </li>
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
                 <li><%= render 'books/book_search' %></li>
               <% elsif admin_signed_in? %>
