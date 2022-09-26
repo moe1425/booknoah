@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2022_09_19_013033) do
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author"
-    t.integer "isbn", null: false
+    t.string "isbn", null: false
     t.string "item_url"
     t.string "image_url"
     t.boolean "is_read", default: false, null: false
