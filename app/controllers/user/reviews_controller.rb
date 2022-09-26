@@ -26,7 +26,7 @@ class User::ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    @book = Book.find(params[:id])
+    @book = Book.find(params[:book_id])
   end
   
   def update
@@ -49,7 +49,8 @@ class User::ReviewsController < ApplicationController
   end
   
   def ensure_correct_user
-    if @review.user != current_user
+    review = Review.find(params[:id])
+    if review.user != current_user
       redirect_to reviews_path
     end
   end
