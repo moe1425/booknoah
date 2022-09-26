@@ -49,7 +49,7 @@ class User::ReviewsController < ApplicationController
   end
   
   def ensure_correct_user
-    if @post.user != current_user
+    if @review.user != current_user
       redirect_to reviews_path
     end
   end
