@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    get '/my_page' => 'users#show'
+    get '/my_page/:id' => 'users#show', as: :my_page
     get '/information/edit' => 'users#edit'
     patch '/information' => 'users#update'
     get '/unsubscribe' => 'users#unsubscribe'

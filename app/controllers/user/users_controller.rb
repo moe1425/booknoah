@@ -3,7 +3,7 @@ class User::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @books = current_user.user_books.all
     @book_read = current_user.user_books.where(is_read: true)
   end

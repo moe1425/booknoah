@@ -8,7 +8,7 @@
       <% end %>
     </div>
       <span class="ml-2"><%= review_comment.user.name %></span>
-      <%= link_to my_page_path(review_comment.user.id), class: "no-border" do %>
+      <%= link_to my_page_path(review_comment.user), class: "no-border" do %>
         <%= image_tag review_comment.user.get_profile_image(50, 50), class: "profile-img" %>
       <% end %>
 
