@@ -1,18 +1,18 @@
   <% review.review_comments.each do |review_comment| %>
     <div class="col-12 my-3 text-end">
-          <div class="col-12 text-end my-2">
-      <% if current_user.id == review_comment.user.id %>
-        <%= link_to book_review_review_comment_path(review_comment.review.book.id, review_comment.review_id, review_comment.id), method: :delete, remote: true, class: "delete_link" do %>
-          <i class="fas fa-times"></i>
+      <div class="col-12 text-end my-2">
+        <% if current_user.id == review_comment.user.id %>
+          <%= link_to book_review_review_comment_path(review_comment.review.book.id, review_comment.review_id, review_comment.id), method: :delete, remote: true, class: "delete_link" do %>
+            <i class="fas fa-times"></i>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
       <span class="ml-2"><%= review_comment.user.name %></span>
       <%= link_to my_page_path(review_comment.user), class: "no-border" do %>
         <%= image_tag review_comment.user.get_profile_image(50, 50), class: "profile-img" %>
       <% end %>
-
-       <div class="col-12 mb-2">
+       
+      <div class="col-12 mb-2">
         <%= review_comment.comment %>
       </div>
       <div class="col-12 text-right">

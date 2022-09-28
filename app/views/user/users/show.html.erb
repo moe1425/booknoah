@@ -35,8 +35,8 @@
             <br><%= link_to "プロフィールを編集", information_edit_path(@user), class: "btn btn-outline-secondary my-3 col-lg-6" %>
           <% end %>
           </div>
-          <%= link_to "本一覧", books_path, class: "btn btn-light btnx-orange-light" %>
-          <%= link_to "レビュー一覧", reviews_path, class: "btn btn-light btnx-orange-light" %>
+          <%= link_to "本一覧", books_path(user_id: @user.id), class: "btn btn-light btnx-orange-light" %>
+          <%= link_to "レビュー一覧", reviews_path(user_id: @user.id), class: "btn btn-light btnx-orange-light" %>
         </div>
       </div>
     </div>

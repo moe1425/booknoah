@@ -69,7 +69,7 @@
             <ul class="list-unstyled text-center">
               <% if user_signed_in? %>
                 <li><%= link_to "ホーム", my_page_path(current_user) %></li>
-                <li><%= link_to "本一覧",  books_path %></li>
+                <li><%= link_to "本一覧",  books_path%>) %></li>
                 <li><%= link_to "マイレビュー", reviews_path %></li>
                 <li class="list-inline-item">
                   <%= content_tag(:span, content_tag(:i, "", class: "fas fa-circle"), class: "notification-check") if unchecked_notificatons.any? %>

@@ -16,7 +16,8 @@ class User::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = current_user.reviews.page(params[:page]).per(10)
+    user = User.find_by(id: params[:user_id]) || current_user
+    @reviews = user.reviews.page(params[:page]).per(10)
   end
   
   def favorites

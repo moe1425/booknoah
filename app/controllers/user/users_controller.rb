@@ -4,8 +4,8 @@ class User::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @books = current_user.user_books.all
-    @book_read = current_user.user_books.where(is_read: true)
+    @books = @user.user_books.all
+    @book_read = @user.user_books.where(is_read: true)
   end
 
   def edit
