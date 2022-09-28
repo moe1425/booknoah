@@ -54,4 +54,5 @@ class User::ReviewsController < ApplicationController
       redirect_to reviews_path
     end
   end
+  
 end

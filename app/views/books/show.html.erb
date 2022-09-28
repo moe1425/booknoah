@@ -17,6 +17,8 @@
           <%= link_to "レビューを投稿する",  new_book_review_path(@book), class: "btn btn-primary" %></br>
           <br><%= link_to "一覧に戻る", books_path, class: "btn btn-outline-primary" %>
         </div>
+        
+        
         <h3 class="mb-4 mt-4 fw-bold">みんなのレビュー</h3>
         <% @reviews.each do |review| %>
           <div class="row mb-3 border-bottom p-2 border-opacity-75">
