@@ -32,7 +32,8 @@ class BooksController < ApplicationController
   end
   
   def index
-    @books = current_user.user_books.page(params[:page]).per(10)
+    user = User.find_by(id: params[:user_id]) || current_user
+    @books = user.user_books.page(params[:page]).per(10)
   end
 
   def show
