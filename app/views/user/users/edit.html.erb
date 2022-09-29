@@ -20,7 +20,7 @@
         <div class="form_group">
           <br><%= f.submit "編集を更新", class: "btn btn-outline-primary rounded-pill" %>
           <%= link_to "退会する", unsubscribe_path(@user.id), class: "btn btn-outline-danger rounded-pill" %></br>
-          <br><%= link_to "戻る", my_page_path, class: "btn btn-outline-secondary rounded-pill" %>
+          <br><%= link_to "戻る", my_page_path(current_user), class: "btn btn-outline-secondary rounded-pill" %>
         </div>
       <% end %>
     </div>
